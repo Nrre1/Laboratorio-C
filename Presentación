@@ -1,0 +1,7 @@
+1. Enlace al Repositorio GitHub / GitLab: Debe contener todo el código fuente modularizado (.c y .h), archivo Makefile o scripts de compilación, y el historial de cambios.
+2. Archivo README.md: Documento Markdown ubicado en la raíz del repositorio conteniendo: a) Integrantes y comisión; b) Descripción detallada del escenario Artemis asignado y reglas del juego; c) Breve detalle de funcionamiento; d) Instrucciones claras de compilación y ejecución; e) Registro detallado del uso de Inteligencia Artificial.
+3. Video grabado por el equipo completo, con una duración máxima de 5 minutos, subido a YouTube, Drive o Loom. El video debe incluir:
+   a) Presentación breve de cada integrante, con aparición en el video y utilizando su voz real.
+   b) Explicación general de la arquitectura del programa en C y su modularización.
+   c) Demostración de la ejecución del juego mediante un caso exitoso.
+   d) Demostración de las validaciones implementadas ante entradas erróneas del usuario.
