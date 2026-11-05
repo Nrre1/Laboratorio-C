@@ -1,0 +1,8 @@
+Situación - Problema 2: Inserción y Estabilidad en Órbita Terrestre Baja — LEO (MCU y Gravitación)
+Tras apagar sus motores de ascenso, la nave Orion es inyectada en una órbita terrestre baja (LEO) de estacionamiento, donde realiza un Movimiento Circular Uniforme (MCU) a una altitud constante de h = 192,0 km (192.000,0 m) sobre la superficie terrestre. Considere que la masa de la Tierra es MT = 5,972 × 10²⁴ kg, el radio terrestre medio es RT = 6.371,0 km (6.371.000,0 m), la radio orbital total es r = RT + h = 6.563,0 km (6.563.000,0 m), y la constante de gravitación universal es G = 6,674 × 10⁻¹¹ N·m²/kg². La masa total de la nave Orion en órbita es morion = 33.000,0 kg.
+Ejemplos de preguntas de análisis y cálculo analítico que el programa debería responder, a partir de distintos valores de entrada ingresados por el usuario 
+
+Demuestre analíticamente que la fuerza de atracción gravitatoria actúa como la fuerza centrípeta del sistema y calcule el módulo de la velocidad orbital v necesaria para mantener dicha órbita circular.
+¿Cuántos segundos y minutos le toma a la nave Orion completar una vuelta completa (período orbital T) alrededor de la Tierra?
+Calcule el módulo de la aceleración centrípeta que experimentan los astronautas dentro de la cápsula a esa altitud.
+Si durante la órbita la nave enciende un propulsor auxiliar lateral que genera un pulso de aceleración a = 0,50 m/s² constante y perpendicular a su velocidad orbital durante Δt = 10,0 s, describa la trayectoria resultante y calcule la desviación lateral instantánea.
