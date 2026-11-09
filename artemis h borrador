@@ -1,0 +1,107 @@
+#ifndef ARTEMIS_H
+#define ARTEMIS_H
+
+/*
+ * artemis.h
+ * Escenario 2: Insercion y estabilidad en Orbita Terrestre Baja (LEO)
+ * MCU y gravitacion - Mision Artemis (nave Orion).
+ * Constantes, registros (struct) y prototipos publicos de la simulacion.
+ */
+
+/* ---------- Constantes fisicas ---------- */
+#define G               6.674E-11       /* N*m2/kg2  constante de gravitacion */
+#define MT              5.972E24        /* kg        masa de la Tierra        */
+#define RT              6371000.0       /* m         radio terrestre medio    */
+#define PI              3.141592653589793
+#define G_TERRESTRE     9.80            /* m/s2      para expresar en "g"     */
+
+/* ---------- Valores del enunciado ---------- */
+#define H_DEFECTO       192000.0        /* m   (192 km)                       */
+#define MASA_DEFECTO    33000.0         /* kg                                 */
+#define A_PULSO_DEFECTO 0.50            /* m/s2 del propulsor lateral         */
+#define T_PULSO_DEFECTO 10.0            /* s   duracion del pulso             */
+
+/* ---------- Tamanos de arreglos y reglas del juego ---------- */
+#define MAX_REPORTES    20
+#define MAX_TURNOS      5
+#define DV_PRESUPUESTO  100.0           /* m/s de dv disponibles en el juego  */
+#define ALT_PERIGEO_MIN 150000.0        /* m   por debajo hay reingreso       */
+#define E_OBJETIVO      0.0001          /* excentricidad maxima para ganar    */
+
+/* ---------- Resultados posibles del juego ---------- */
+#define JUEGO_NO_JUGADO   0
+#define JUEGO_EXITO       1
+#define JUEGO_INCOMPLETA  2
+#define JUEGO_REINGRESO   3
+
+/* ---------- Registros ---------- */
+typedef struct {
+    double altitud;                 /* h [m]  (dato de entrada) */
+    double masa;                    /* m [kg] (dato de entrada) */
+    double radio_orbital;           /* r = RT + h               */
+    double fuerza_gravitatoria;     /* Fg = G*MT*m / r^2        */
+    double fuerza_centripeta;       /* Fc = m*v^2 / r           */
+    double velocidad_orbital;       /* v = sqrt(G*MT / r)       */
+    double periodo_segundos;        /* T = 2*pi*r / v           */
+    double aceleracion_centripeta;  /* ac = v^2 / r             */
+} DatosOrbita;
+
+typedef struct {
+    double excentricidad;
+    double perigeo;                 /* distancia al centro de la Tierra [m] */
+    double apogeo;                  /* distancia al centro de la Tierra [m] */
+} Elementos;
+
+typedef struct {
+    double aceleracion;             /* a  [m/s2]                 */
+    double tiempo;                  /* dt [s]                    */
+    double delta_velocidad;         /* dv = a*dt                 */
+    double desviacion_lateral;      /* 1/2*a*dt^2                */
+    double velocidad_resultante;    /* sqrt(v^2 + dv^2)          */
+    Elementos orbita_resultante;
+} DatosPulso;
+
+typedef struct {
+    DatosOrbita orbita;
+    DatosPulso  pulso;
+} Reporte;
+
+typedef struct {
+    double perturbacion;            /* dv radial aleatorio del turno          */
+    double delta_v;                 /* con signo: + hacia afuera, - adentro   */
+    double excentricidad;
+    double perigeo_km;
+    double apogeo_km;
+} Turno;
+
+typedef struct {
+    int    resultado;               /* JUEGO_NO_JUGADO ... JUEGO_REINGRESO */
+    double dv_total;
+    double excent_final;
+} ResumenJuego;
+
+/* ---------- Funciones publicas ---------- */
+
+/* Items a), b) y c) */
+void calcular_orbita(DatosOrbita *datos);
+void configurar_parametros(DatosOrbita *datos);
+void mostrar_resultados_orbita(const DatosOrbita *datos);
+
+/* Elementos de la orbita a partir de (r, vr, vt) */
+void elementos_orbitales(double r, double vr, double vt, Elementos *elem);
+
+/* Item d) */
+void calcular_pulso(double v_orbital, double radio, double a, double tiempo,
+                    DatosPulso *datos);
+void mostrar_resultados_pulso(const DatosPulso *datos);
+void guardar_reporte(Reporte tabla[], int *cantidad,
+                     const DatosOrbita *orbita, const DatosPulso *pulso);
+
+/* Juego por turnos y reporte final */
+void simular_juego(const DatosOrbita *datos, Turno tab[], int *cant,
+                   ResumenJuego *res);
+void mostrar_reporte_final(const Reporte tab_rep[], int cant_rep,
+                           const Turno tab[], int cant_turnos,
+                           const ResumenJuego *res);
+
+#endif /* ARTEMIS_H */
