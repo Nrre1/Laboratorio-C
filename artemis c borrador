@@ -1,0 +1,290 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include "artemis.h"
+#include "validaciones.h"
+
+/* ================================================================== */
+/*  Items a), b) y c): orbita circular                                 */
+/* ================================================================== */
+
+void calcular_orbita(DatosOrbita *datos)
+{
+    datos->radio_orbital          = RT + datos->altitud;
+    datos->fuerza_gravitatoria    = G * MT * datos->masa / pow(datos->radio_orbital, 2);
+    datos->velocidad_orbital      = sqrt(G * MT / datos->radio_orbital);
+    datos->fuerza_centripeta      = datos->masa * pow(datos->velocidad_orbital, 2)
+                                    / datos->radio_orbital;
+    datos->periodo_segundos       = 2 * PI * datos->radio_orbital / datos->velocidad_orbital;
+    datos->aceleracion_centripeta = pow(datos->velocidad_orbital, 2) / datos->radio_orbital;
+}
+
+/* Pide h y m (o usa los del enunciado) y deja la orbita siempre actualizada */
+void configurar_parametros(DatosOrbita *datos)
+{
+    if ((int)leer_numero("Usar valores del enunciado (h=192 km, m=33000 kg)? 1 = si, 2 = no: ",
+                         1, 2, 1) == 1) {
+        datos->altitud = H_DEFECTO;
+        datos->masa    = MASA_DEFECTO;
+    } else {
+        datos->altitud = 1000 * leer_numero("Altitud h [km] (180 - 2000): ", 180, 2000, 0);
+        datos->masa    = leer_numero("Masa [kg] (1000 - 100000): ", 1000, 100000, 0);
+    }
+    calcular_orbita(datos);
+    printf("Parametros cargados y orbita recalculada.\n");
+}
+
+void mostrar_resultados_orbita(const DatosOrbita *datos)
+{
+    double dif_rel = fabs(datos->fuerza_gravitatoria - datos->fuerza_centripeta)
+                     / datos->fuerza_gravitatoria;
+
+    printf("\nREPORTE ORBITAL LEO\n");
+    printf("h = %.1f km | m = %.1f kg | r = %.1f km\n",
+           datos->altitud / 1000, datos->masa, datos->radio_orbital / 1000);
+    printf("a) Fg = G*MT*m/r^2 = %.6e N\n", datos->fuerza_gravitatoria);
+    printf("   Fc = m*v^2/r    = %.6e N\n", datos->fuerza_centripeta);
+    printf("   Diferencia relativa = %.3e  (Fg = Fc)\n", dif_rel);
+    printf("   Si Fg actua como Fc: G*MT*m/r^2 = m*v^2/r -> v^2 = G*MT/r (la masa se cancela)\n");
+    printf("   Velocidad orbital v = %.2f m/s\n", datos->velocidad_orbital);
+    printf("b) Periodo T = %.1f s = %.2f min\n",
+           datos->periodo_segundos, datos->periodo_segundos / 60);
+    printf("c) Aceleracion centripeta = %.4f m/s2 (%.3f g)\n",
+           datos->aceleracion_centripeta, datos->aceleracion_centripeta / G_TERRESTRE);
+}
+
+/* ================================================================== */
+/*  Elementos de la orbita                                             */
+/* ================================================================== */
+
+/*
+ * Elementos de la orbita a partir de (r, vr, vt), con mu = G*MT:
+ *   energia:        E = (vr^2 + vt^2)/2 - mu/r
+ *   excentricidad:  e^2 = (r*vt^2/mu - 1)^2 + (r*vr*vt/mu)^2
+ *   semieje mayor:  a = -mu / (2*E)
+ *   perigeo/apogeo: a*(1 -/+ e)
+ */
+void elementos_orbitales(double r, double vr, double vt, Elementos *elem)
+{
+    double mu = G * MT;
+    double energia = (pow(vr, 2) + pow(vt, 2)) / 2 - mu / r;
+    double fx = r * pow(vt, 2) / mu - 1;
+    double fy = r * vr * vt / mu;
+    double semieje;
+
+    elem->excentricidad = sqrt(pow(fx, 2) + pow(fy, 2));
+
+    if (energia >= 0.0) {
+        /* Orbita abierta (escape). Con las reglas del juego no se alcanza,
+         * pero se evita dividir por cero. */
+        elem->perigeo = 0.0;
+        elem->apogeo  = 0.0;
+        return;
+    }
+    semieje = -mu / (2 * energia);
+    elem->perigeo = semieje * (1 - elem->excentricidad);
+    elem->apogeo  = semieje * (1 + elem->excentricidad);
+}
+
+/* ================================================================== */
+/*  Item d): pulso lateral (perpendicular a la velocidad), dv = a*dt   */
+/* ================================================================== */
+
+void calcular_pulso(double v_orbital, double radio, double a, double tiempo,
+                    DatosPulso *datos)
+{
+    datos->aceleracion          = a;
+    datos->tiempo               = tiempo;
+    datos->delta_velocidad      = a * tiempo;
+    datos->desviacion_lateral   = 0.5 * a * pow(tiempo, 2);
+    datos->velocidad_resultante = sqrt(pow(v_orbital, 2) + pow(datos->delta_velocidad, 2));
+    elementos_orbitales(radio, datos->delta_velocidad, v_orbital, &datos->orbita_resultante);
+}
+
+void mostrar_resultados_pulso(const DatosPulso *datos)
+{
+    printf("\nREPORTE DEL PULSO LATERAL\n");
+    printf("Aceleracion: %.3f m/s2 | Duracion: %.2f s\n", datos->aceleracion, datos->tiempo);
+    printf("Cambio de velocidad lateral dv = a*dt: %.3f m/s\n", datos->delta_velocidad);
+    printf("Desviacion lateral 1/2*a*dt^2: %.3f m\n", datos->desviacion_lateral);
+    printf("Velocidad resultante: %.3f m/s\n", datos->velocidad_resultante);
+    printf("La orbita deja de ser circular: pasa a ser eliptica, e = dv/v = %.6f\n",
+           datos->orbita_resultante.excentricidad);
+    printf("Perigeo: %.3f km | Apogeo: %.3f km de altitud\n",
+           (datos->orbita_resultante.perigeo - RT) / 1000,
+           (datos->orbita_resultante.apogeo - RT) / 1000);
+    if (datos->orbita_resultante.perigeo - RT < ALT_PERIGEO_MIN) {
+        printf("ATENCION: el perigeo queda en la atmosfera densa (reingreso).\n");
+    }
+}
+
+/* El arreglo y el contador se modifican -> llegan por puntero */
+void guardar_reporte(Reporte tabla[], int *cantidad,
+                     const DatosOrbita *orbita, const DatosPulso *pulso)
+{
+    if (*cantidad < MAX_REPORTES) {
+        tabla[*cantidad].orbita = *orbita;
+        tabla[*cantidad].pulso  = *pulso;
+        (*cantidad)++;
+    } else {
+        mensaje_error("Se alcanzo el limite de reportes.");
+    }
+}
+
+/* ================================================================== */
+/*  Simulacion por turnos (juego)                                      */
+/* ================================================================== */
+
+void simular_juego(const DatosOrbita *datos, Turno tab[], int *cant, ResumenJuego *res)
+{
+    Elementos elem = {0.0, 0.0, 0.0};
+    Turno *t;
+    double vr = 0.0;                /* orbita circular: sin velocidad radial */
+    double vt = datos->velocidad_orbital;
+    double a, dt;
+    double dv = 0.0;
+    double dv_total = 0.0;
+    int turno = 1;
+    int sentido;
+    int presupuesto_ok;
+    int reingreso = 0;
+
+    printf("\nSIMULACION POR TURNOS: ORBITA ESTABLE\n");
+    printf("Objetivo: %d turnos con e <= %g y perigeo >= %.0f km\n",
+           MAX_TURNOS, E_OBJETIVO, ALT_PERIGEO_MIN / 1000);
+    printf("Cada turno un evento aleatorio desvia la nave. Presupuesto de dv: %.0f m/s\n",
+           DV_PRESUPUESTO);
+
+    *cant = 0;
+
+    while (turno <= MAX_TURNOS && !reingreso) {
+        t = &tab[turno - 1];
+
+        /* Evento aleatorio: dv radial entre -5.00 y +5.00 m/s */
+        t->perturbacion = (rand() % 1001) / 100.0 - 5.0;
+        vr += t->perturbacion;
+        elementos_orbitales(datos->radio_orbital, vr, vt, &elem);
+
+        printf("\n--- TURNO %d de %d ---\n", turno, MAX_TURNOS);
+        printf("Evento aleatorio: dv radial = %+.2f m/s\n", t->perturbacion);
+        printf("Estado: e = %.6f | perigeo = %.3f km | apogeo = %.3f km\n",
+               elem.excentricidad, (elem.perigeo - RT) / 1000, (elem.apogeo - RT) / 1000);
+        printf("Presupuesto restante: %.2f m/s\n", DV_PRESUPUESTO - dv_total);
+
+        /* Decision del jugador (validada contra el presupuesto) */
+        do {
+            a  = leer_numero("Aceleracion del pulso [m/s2] (0 = no actuar, max 2): ", 0, 2, 0);
+            dt = leer_numero("Duracion del pulso [s] (max 30): ", 0, 30, 0);
+            dv = a * dt;
+            presupuesto_ok = (dv_total + dv <= DV_PRESUPUESTO);
+            if (!presupuesto_ok) {
+                mensaje_error("El pulso supera el presupuesto restante.");
+            }
+        } while (!presupuesto_ok);
+
+        sentido = 0;
+        if (dv > 0) {
+            if ((int)leer_numero("Sentido: 1 = afuera, 2 = adentro: ", 1, 2, 1) == 1) {
+                sentido = 1;
+            } else {
+                sentido = -1;
+            }
+        }
+
+        vr       += sentido * dv;
+        dv_total += dv;                                 /* acumulador */
+        elementos_orbitales(datos->radio_orbital, vr, vt, &elem);
+
+        t->delta_v       = sentido * dv;
+        t->excentricidad = elem.excentricidad;
+        t->perigeo_km    = (elem.perigeo - RT) / 1000;
+        t->apogeo_km     = (elem.apogeo - RT) / 1000;
+        (*cant)++;                                      /* contador */
+
+        printf("Resultado: e = %.6f | perigeo = %.3f km | apogeo = %.3f km\n",
+               elem.excentricidad, t->perigeo_km, t->apogeo_km);
+
+        if (elem.perigeo - RT < ALT_PERIGEO_MIN) {
+            mensaje_error("El perigeo cayo en la atmosfera: REINGRESO.");
+            reingreso = 1;
+        }
+        turno++;                                        /* contador */
+    }
+
+    /* Evaluacion final */
+    res->dv_total     = dv_total;
+    res->excent_final = elem.excentricidad;
+    if (reingreso) {
+        res->resultado = JUEGO_REINGRESO;
+    } else if (elem.excentricidad <= E_OBJETIVO) {
+        res->resultado = JUEGO_EXITO;
+    } else {
+        res->resultado = JUEGO_INCOMPLETA;
+    }
+
+    switch (res->resultado) {
+    case JUEGO_EXITO:
+        printf("\nMISION EXITOSA: orbita estabilizada.\n");
+        break;
+    case JUEGO_INCOMPLETA:
+        printf("\nMISION INCOMPLETA: la orbita sigue demasiado excentrica.\n");
+        break;
+    case JUEGO_REINGRESO:
+        printf("\nMISION FALLIDA: reingreso atmosferico.\n");
+        break;
+    }
+}
+
+/* ================================================================== */
+/*  Reporte final                                                      */
+/* ================================================================== */
+
+void mostrar_reporte_final(const Reporte tab_rep[], int cant_rep,
+                           const Turno tab[], int cant_turnos,
+                           const ResumenJuego *res)
+{
+    const Reporte *r;
+    const Turno *t;
+
+    printf("\nREPORTE FINAL DE DESEMPENO\n");
+    printf("--- Maniobras con propulsor lateral ---\n");
+    if (cant_rep == 0) {
+        printf("No hay reportes almacenados.\n");
+    } else {
+        for (r = tab_rep; r < tab_rep + cant_rep; r++) {
+            printf("Reporte %d: h = %.1f km | m = %.1f kg\n",
+                   (int)(r - tab_rep) + 1, r->orbita.altitud / 1000, r->orbita.masa);
+            printf("  v = %.2f m/s | T = %.2f min\n",
+                   r->orbita.velocidad_orbital, r->orbita.periodo_segundos / 60);
+            printf("  Pulso: a = %.3f m/s2, dt = %.2f s -> desviacion = %.3f m, e = %.6f\n",
+                   r->pulso.aceleracion, r->pulso.tiempo, r->pulso.desviacion_lateral,
+                   r->pulso.orbita_resultante.excentricidad);
+        }
+    }
+
+    printf("--- Simulacion por turnos ---\n");
+    if (res->resultado == JUEGO_NO_JUGADO) {
+        printf("Aun no jugada.\n");
+    } else {
+        printf("%-6s %-10s %-18s %-10s %-11s %-10s\n",
+               "Turno", "Perturb.", "dv (+afuera/-adent)", "Excent.", "Perigeo km", "Apogeo km");
+        for (t = tab; t < tab + cant_turnos; t++) {
+            printf("%-6d %-10.2f %-18.2f %-10.6f %-11.3f %-10.3f\n",
+                   (int)(t - tab) + 1, t->perturbacion, t->delta_v, t->excentricidad,
+                   t->perigeo_km, t->apogeo_km);
+        }
+        printf("DV total usado: %.2f de %.0f m/s | Excentricidad final: %.6f\n",
+               res->dv_total, DV_PRESUPUESTO, res->excent_final);
+        switch (res->resultado) {
+        case JUEGO_EXITO:
+            printf("Resultado: EXITO\n");
+            break;
+        case JUEGO_INCOMPLETA:
+            printf("Resultado: INCOMPLETA\n");
+            break;
+        case JUEGO_REINGRESO:
+            printf("Resultado: FALLIDA (reingreso)\n");
+            break;
+        }
+    }
+}
