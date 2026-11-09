@@ -1,0 +1,28 @@
+#ifndef VALIDACIONES_H
+#define VALIDACIONES_H
+
+/*
+ * validaciones.h
+ * Ingreso seguro de datos por consola y mensajes de error.
+ * Corresponde a MENSAJE_ERROR, ES_NUMERO y LEER_NUMERO del pseudocodigo.
+ */
+
+#define LONG_TEXTO 128
+
+/* Muestra un mensaje de error con formato uniforme. */
+void mensaje_error(const char *texto);
+
+/*
+ * Verifica el TIPO del texto: solo digitos, a lo sumo un separador decimal
+ * (solo si admite_decimal != 0) y signo unicamente al principio.
+ * Devuelve 1 si es un numero valido y 0 en caso contrario.
+ */
+int es_numero(const char *texto, int admite_decimal);
+
+/*
+ * Valida tipo (entero o real) y rango [minimo, maximo]. Repite la pregunta
+ * hasta que el dato sea correcto. Acepta coma o punto como separador decimal.
+ */
+double leer_numero(const char *mensaje, double minimo, double maximo, int solo_entero);
+
+#endif /* VALIDACIONES_H */
