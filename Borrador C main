@@ -1,0 +1,35 @@
+static void Menu(void) // menú y llamadas a las funciones del programa
+{
+    printf("\nSIMULADOR ARTEMIS - ESCENARIO 2 LEO\n");
+    printf("1. Configurar parametros (altitud y masa)\n");
+    printf("2. Mostrar orbita LEO\n");
+    printf("3. Simular pulso lateral\n");
+    printf("4. Simulacion por turnos\n");
+    printf("5. Reporte final\n");
+    printf("0. Salir\n");
+}
+
+int main(void)
+{
+    DatosOrbita orbita;
+    int opcion;         
+
+    printf("Ingrese los datos de la mision:\n");
+    conf_par(&orbita);                      
+
+    do {
+        Menu();
+        opcion = (int)lee_nro("Seleccione una opcion: ", 0, 4, true);
+        switch (opcion) {
+            case 1: conf_par(&orbita);       break;
+            case 2: muestra_result(&orbita); break;
+            case 3: pulso_lateral(&orbita);  break;
+            case 4: simulaJ(&orbita);        break;
+            case 0: printf("Mision finalizada.\n"); break;
+        }
+    } while (opcion != 0);
+
+    return 0;
+}
+
+
