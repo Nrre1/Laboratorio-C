@@ -7,7 +7,7 @@
 
 static void mostrar_menu(void)
 {
-    printf("\nSIMULADOR ARTEMIS - ESCENARIO 2\n");
+    printf("\nSIMULADOR ARTEMIS \n");
     printf("1. Configurar parametros (altitud y masa)\n");
     printf("2. Mostrar orbita LEO\n");
     printf("3. Simular pulso lateral\n");
