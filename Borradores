@@ -1,0 +1,30 @@
+  // main 
+    Procedimiento Menu() es
+        ESC ("SIMULADOR ARTEMIS - ESCENARIO 2 LEO")
+        ESC ("1. Configurar parametros (altitud y masa)")
+        ESC ("2. Mostrar orbita LEO")
+        ESC ("3. Simular pulso lateral")
+        ESC ("4. Simulacion por turnos")
+        ESC ("5. Reporte final")
+        ESC ("0. Salir")
+    Fp
+
+//proceso
+proceso 
+  abrir_archivos()
+  cantidadReportes  := 0
+  cantidadTurnos    := 0
+  resultadoJuego    := 0
+
+   REPETIR
+        Menu()
+        leer(opcion)
+        SEGUN opcion HACER
+            1:  conf_Par (orbita)
+            2:  muestra_result (orbita)
+            3:  ejecuta (orbita, reportes, cantidadReportes)
+            4:  simulaJ (orbita, turnos, cantidadTurnos, resultadoJuego)
+            5:  reporte_final (reportes, cantidadReportes, turnos, cantidadTurnos, resultadoJuego)
+            0:  ESC ("Mision finalizada.")
+        Fin Segun
+    HASTA QUE opcion = 0
