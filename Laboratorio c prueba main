@@ -1,0 +1,32 @@
+#ifndef SIMULADOR_H
+#define SIMULADOR_H
+
+#include <stdio.h>
+#include <math.h>
+
+#define G 6.674e-11 
+#define MASA_TIERRA 5.972e24   
+#define RADIO_TIERRA 6371000.0  
+#define ALTITUD_LEO 192000.0     
+#define RADIO_ORBITAL 6563000.0  
+#define MASA_ORION 33000.0       
+
+
+typedef struct {
+    double masa;
+    double altitud;
+    double radio_orbital;
+    double velocidad_orbital;
+    double periodo_segundos;
+    double periodo_minutos;
+    double aceleracion_centripeta;
+    double desviacion_lateral;
+} NaveOrion;
+
+void inicializar_nave(NaveOrion *nave);
+void calcular_velocidad(NaveOrion *nave);
+void calcular_periodo(NaveOrion *nave);
+void calcular_aceleracion_centripeta(NaveOrion *nave);
+void calcular_maniobra_desviacion(NaveOrion *nave, double aceleracion_pulso, double tiempo_pulso);
+
+#endif
