@@ -7,9 +7,9 @@ Integrantes:
 
 -Franco, Gastón
 
--Lazarte, Mariano
+-Lazarte, Valentino Mariano
 
--Valussi Melendez, Fabrizio 
+-Valussi Melendes, Fabrizio 
 
 
 Comisión: K1.3
