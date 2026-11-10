@@ -4,12 +4,18 @@ Universidad Tecnológica Nacional – Facultad Regional Resistencia Cátedra: Al
 Integrantes:
 -
 -Arriazu, Nerea
+
 -Franco, Gastón
+
 -Lazarte, Mariano
+
 -Valussi Melendez, Fabrizio 
 
+
 Comisión: K1.3
+
 Año: 2026 
+
 Video de presentación del trabajo:
 
 ---
