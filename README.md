@@ -9,13 +9,11 @@ Integrantes:
 -Valussi Melendez, Fabrizio 
 
 Comisión: K1.3
--
 Año: 2026 
--
 Video de presentación del trabajo:
--
 
 ---
+
 Escenario Propuesto:
 -
 
@@ -32,8 +30,8 @@ Tras apagar los motores de ascenso, la nave Orion queda en una órbita terrestre
     Radio orbital (r = R_T + h)     	6.563.000 m
     Masa de Orion (m)	                33.000 kg
     Pulso lateral	                    a = 0,50 m/s² durante Δt = 10 s
-
 ---
+
 Fundamento Físico:
 -
 1) Ecuaciones Utilizadas:
