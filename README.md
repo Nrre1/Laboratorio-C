@@ -3,13 +3,13 @@ Universidad Tecnológica Nacional – Facultad Regional Resistencia Cátedra: Al
 
 Integrantes:
 -
--Arriazu, Nerea
+-Arriazu, Nerea Micaela
 
--Franco, Gastón
+-Franco, Gastón Agustín
 
 -Lazarte, Valentino Mariano
 
--Valussi Melendes, Fabrizio 
+-Valussi Melendes, Fabrizio Francisco
 
 
 Comisión: K1.3
