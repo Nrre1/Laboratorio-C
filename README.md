@@ -28,6 +28,8 @@ Gravitación)
 -
 Tras apagar los motores de ascenso, la nave Orion queda en una órbita terrestre baja (LEO) de estacionamiento, donde describe un Movimiento Circular Uniforme (MCU) a altitud constante. Datos otorgados por el enunciado:
 
+<code style="color : name_color"><
+
           Dato	                          Valor
     Masa de la Tierra (MT)	          5,972 × 10²⁴ kg
     Radio medio de la Tierra (RT)    	6.371.000 m
@@ -35,7 +37,9 @@ Tras apagar los motores de ascenso, la nave Orion queda en una órbita terrestre
     Altitud de la órbita (h)	        192.000 m
     Radio orbital (r = R_T + h)     	6.563.000 m
     Masa de Orion (m)	                33.000 kg
-    Pulso lateral	                    a = 0,50 m/s² durante Δt = 10 s
+    Pulso lateral	                    a = 0,50 m/s² durante Δt = 10 s 
+    
+/code>
 ---
 
 Fundamento Físico:
