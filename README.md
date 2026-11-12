@@ -1,7 +1,7 @@
-# 🚀 Simulador Artemis
+# 🚀 Simulador Artemis                                                                                                                     ![Lenguaje](https://share.google/YEIUpCnjHDIzOV59a)                    
 ![Lenguaje](https://img.shields.io/badge/Lenguaje-C11-blue?logo=c&logoColor=white)
 
-Universidad Tecnológica Nacional – Facultad Regional Resistencia Cátedra: Algoritmos y Estructuras de Datos · Ingeniería en Sistemas de Información Trabajo Práctico Integrador Final · Lenguaje C
+Universidad Tecnológica Nacional – Facultad Regional Resistencia, Cátedra: Algoritmos y Estructuras de Datos · Ingeniería en Sistemas de Información, Trabajo Práctico Integrador Final · Lenguaje C
 
 
 Integrantes:
@@ -99,7 +99,7 @@ Se acepta **coma o punto** como separador decimal
 Menú Principal:
 -
 ```text
-      SIMULADOR ARTEMIS - ESCENARIO 2 LEO
+      SIMULADOR MISION ARTEMIS
       1. Cambiar altitud y masa
       2. Mostrar orbita LEO 
       3. Pulso lateral 
