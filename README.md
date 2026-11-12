@@ -90,18 +90,20 @@ entrada de datos:
            Duración en el juego	     0 a 30 s
            Opción del menú	          0 a 4
 
-Se acepta la coma o el punto como separador decimal.
+Se acepta **coma o punto** como separador decimal
 
 ---
 
 Menú Principal:
 -
+```text
       SIMULADOR ARTEMIS - ESCENARIO 2 LEO
       1. Cambiar altitud y masa
       2. Mostrar orbita LEO 
       3. Pulso lateral 
       4. Simulacion por turnos
       0. Salir
+```
 
 ## Estructura del proyecto
 
