@@ -7,7 +7,7 @@
 #define TAM_LINEA 128 
 
 /* Pide un dato y solo lo acepta si es un NUMERO dentro del rango.
- * Con cualquier otra cosa (letras, simbolos, vacio, etc) muestra el error y vuelve a pedir. */
+Con cualquier otra cosa (letras, simbolos, vacio, etc) muestra el error y vuelve a pedir */
 double lee_nro(const char *mensaje, double minimo, double maximo, bool soloEntero)
 {
     char linea[TAM_LINEA];  
