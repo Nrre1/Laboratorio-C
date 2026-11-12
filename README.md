@@ -31,13 +31,13 @@ Tras apagar los motores de ascenso, la nave Orion queda en una órbita terrestre
 
 $${\color{cyan}DATO \space \space \space \space \space \space \space \color{cyan}VALOR}$$
 
-                                                            Masa de la Tierra (MT)	          5,972 × 10²⁴ kg
-                                                            Radio medio de la Tierra (RT)    	6.371.000 m
-                                                            Constante de gravitación (G)    	6,674 × 10⁻¹¹ N·m²/kg²
-                                                            Altitud de la órbita (h)	        192.000 m
-                                                            Radio orbital (r = R_T + h)     	6.563.000 m
-                                                            Masa de Orion (m)	                33.000 kg
-                                                            Pulso lateral	                    a = 0,50 m/s² durante Δt = 10 s 
+                                         Masa de la Tierra (MT)	          5,972 × 10²⁴ kg
+                                         Radio medio de la Tierra (RT)    	6.371.000 m
+                                         Constante de gravitación (G)    	6,674 × 10⁻¹¹ N·m²/kg²
+                                         Altitud de la órbita (h)	        192.000 m
+                                         Radio orbital (r = R_T + h)     	6.563.000 m
+                                         Masa de Orion (m)	                33.000 kg
+                                         Pulso lateral	                    a = 0,50 m/s² durante Δt = 10 s 
     
 ---
 
