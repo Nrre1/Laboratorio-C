@@ -32,7 +32,7 @@ int main(void)
         opcion = (int)lee_nro("Seleccione una opcion: ", 0, 4, true); /* enteros de 0 a 4 */
         switch (opcion) {                                     /* ejecuta la eleccion */
             case 1: InicializarNave(&miNave);  break;         /* cambiaar datos / nuevos datos */
-            case 2: MostrarOrbita(&miNave);    break;         /* items a, b, c */
+            case 2: MostrarOrb(&miNave);    break;         /* items a, b, c */
             case 3: PulsoLateral(&miNave);     break;         /* item d */
             case 4: Turnos(&miNave);    break;         /* juego por turnos */
             case 0: printf("Mision finalizada. Buen trabajo tripulante!.\n"); break;    /* salir */
