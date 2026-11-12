@@ -68,9 +68,9 @@ Fundamento Físico:
            - Calcula Δv, la desviación, y describe la nueva órbita (elíptica, con excentricidad, perigeo y apogeo)
 ---
    
-##Funcionamiento del programa
-
-###Reglas del Juego
+Funcionamiento del programa
+-
+## Reglas del Juego
 
 1)	La partida tiene **5 turnos**
 2)	En cada turno ocurre un **evento aleatorio** que desvía la nave con una velocidad radial entre −5,00 y +5,00 m/s. El programa muestra la velocidad radial acumulada
