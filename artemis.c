@@ -54,7 +54,6 @@ void MostrarOrb(const NaveOrion *nave)
     printf("c) Aceleracion centripeta = %.4f m/s2\n", nave->aceleracion_centripeta); /* resultado de c) */
 }
 
-/* item d y juego */
 
 void CalcElementos(double r, double vr, double vt, Elementos *e)
 {
@@ -126,23 +125,22 @@ void Turnos(const NaveOrion *nave)
     int turno;                                
 
     printf("\nSIMULACION POR TURNOS: deje la orbita casi circular (e <= %g)\n", Excen);
-    for (turno = 0; turno < MaxTurnos; turno++) {                      
+    for (turno = 0; turno < MaxTurnos; turno++) {                                /* ciclo definido 5 turnos */
         tab[turno].perturbacion = (rand() % 1001) / 100.0 - 5.0;        
         vr += tab[turno].perturbacion;                                 
         printf("\n--- TURNO %d de %d ---\n", turno + 1, MaxTurnos);
         printf("Evento: dv radial = %+.2f m/s | velocidad radial actual = %+.2f m/s\n",
-               tab[turno].perturbacion, vr);                           
+               tab[turno].perturbacion, vr);                                            /* el jugador ve que debe corregir */
 
         a = lee_nro("Aceleracion [m/s2] (+ afuera, - adentro, 0 = no actuar): ", -2, 2, false);
-        t = lee_nro("Duracion del pulso [s]: ", 0, 30, false);         
+        t = lee_nro("Duracion del pulso [s]: ", 0, 30, false);         /* duracion del pulso */
         dv = a * t;                                                  
         vr += dv;                                                      
 
-        tab[turno].delta_v = dv;                                        
+        tab[turno].delta_v = dv;                                        /* se guarda lo aplicado */
         CalcElementos(nave->radio_orbital, vr, vt, &tab[turno].orbita);
         printf("Resultado del turno:\n");
         MostrarElem(tab[turno].orbita);
     }
     ReporteFinal(tab, tab[MaxTurnos - 1].orbita.excentricidad <= Excen); /* gana si el ultimo turno quedo casi circular */
 }
-
