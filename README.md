@@ -29,16 +29,15 @@ Video de presentación del trabajo:
 
 Tras apagar los motores de ascenso, la nave Orion queda en una órbita terrestre baja (LEO) de estacionamiento, donde describe un Movimiento Circular Uniforme (MCU) a altitud constante. Datos otorgados por el enunciado:
 
-
-    | Dato | Símbolo | Valor |
-    |------|:-------:|------:|
-    | Masa de la Tierra | MT | 5,972 × 10²⁴ kg |
-    | Radio medio de la Tierra | RT | 6.371.000 m |
-    | Constante de gravitación | G | 6,674 × 10⁻¹¹ N·m²/kg² |
-    | Altitud de la órbita | h | 192.000 m |
-    | Radio orbital (RT + h) | r | 6.563.000 m |
-    | Masa de Orion | m | 33.000 kg |
-    | Pulso lateral | a, Δt | 0,50 m/s² durante 10 s |
+| Dato | Símbolo | Valor |
+|------|:-------:|------:|
+| Masa de la Tierra | MT | 5,972 × 10²⁴ kg |
+| Radio medio de la Tierra | RT | 6.371.000 m |
+| Constante de gravitación | G | 6,674 × 10⁻¹¹ N·m²/kg² |
+| Altitud de la órbita | h | 192.000 m |
+| Radio orbital (RT + h) | r | 6.563.000 m |
+| Masa de Orion | m | 33.000 kg |
+| Pulso lateral | a, Δt | 0,50 m/s² durante 10 s |
     
 ---
 
@@ -46,20 +45,20 @@ Fundamento Físico:
 -
 1) Ecuaciones Utilizadas:
    
-          | Magnitud | Ecuación |
-          |----------|----------|
-       | Radio orbital | $r = R_T + h$ |
-       | Fuerza gravitatoria | $F_g = \dfrac{G \, M_T \, m}{r^2}$ |
-       | Fuerza centrípeta | $F_c = \dfrac{m \, v^2}{r}$ |
-       | Velocidad orbital (de $F_g = F_c$, la masa se cancela) | $v = \sqrt{\dfrac{G \, M_T}{r}}$ |
-       | Período (MCU) | $T = \dfrac{2\pi r}{v}$ |
-       | Aceleración centrípeta | $a_c = \dfrac{v^2}{r}$ |
-       | Cambio de velocidad del pulso | $\Delta v = a \cdot t$ |
-       | Desviación lateral instantánea | $d = \tfrac{1}{2} \, a \, t^2$ |
-       | Energía específica (con $\mu = G M_T$) | $E = \dfrac{v_r^2 + v_t^2}{2} - \dfrac{\mu}{r}$ |
-       | Excentricidad | $e^2 = \left(\dfrac{r v_t^2}{\mu} - 1\right)^2 + \left(\dfrac{r v_r v_t}{\mu}\right)^2$ |
-       | Semieje mayor | $a = -\dfrac{\mu}{2E}$ |
-       | Perigeo / Apogeo | $a(1 - e)$ / $a(1 + e)$ |
+   | Magnitud | Ecuación |
+   |----------|----------|
+   | Radio orbital | $r = R_T + h$ |
+   | Fuerza gravitatoria | $F_g = \dfrac{G \, M_T \, m}{r^2}$ |
+   | Fuerza centrípeta | $F_c = \dfrac{m \, v^2}{r}$ |
+   | Velocidad orbital (de $F_g = F_c$, la masa se cancela) | $v = \sqrt{\dfrac{G \, M_T}{r}}$ |
+   | Período (MCU) | $T = \dfrac{2\pi r}{v}$ |
+   | Aceleración centrípeta | $a_c = \dfrac{v^2}{r}$ |
+   | Cambio de velocidad del pulso | $\Delta v = a \cdot t$ |
+   | Desviación lateral instantánea | $d = \tfrac{1}{2} \, a \, t^2$ |
+   | Energía específica (con $\mu = G M_T$) | $E = \dfrac{v_r^2 + v_t^2}{2} - \dfrac{\mu}{r}$ |
+   | Excentricidad | $e^2 = \left(\dfrac{r v_t^2}{\mu} - 1\right)^2 + \left(\dfrac{r v_r v_t}{\mu}\right)^2$ |
+   | Semieje mayor | $a = -\dfrac{\mu}{2E}$ |
+   | Perigeo / Apogeo | $a(1 - e)$ / $a(1 + e)$ |
 
 2) ¿Qué hace el programa?
 
