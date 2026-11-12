@@ -68,8 +68,8 @@ Fundamento Físico:
            - Calcula Δv, la desviación, y describe la nueva órbita (elíptica, con excentricidad, perigeo y apogeo)
 ---
    
-Funcionamiento del programa
--
+### Funcionamiento del programa
+
 ## Reglas del Juego
 
 1)	La partida tiene **5 turnos**
