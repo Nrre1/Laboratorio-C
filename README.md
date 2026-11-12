@@ -60,7 +60,9 @@ Fundamento Físico:
            - Calcula y muestra T en s y en min.
            - Calcula y muestra ac
            - Calcula Δv, la desviación, y describe la nueva órbita (elíptica, con excentricidad, perigeo y apogeo)
-
+   
+Funcionamiento del programa
+-
 ---
 Reglas del Juego
 -
@@ -86,8 +88,7 @@ entrada de datos:
 Se acepta la coma o el punto como separador decimal.
 
 ---
-Funcionamiento del programa
--
+
 Menú Principal:
 -
       SIMULADOR ARTEMIS - ESCENARIO 2 LEO
