@@ -94,10 +94,8 @@ entrada de datos:
 
 Se acepta **coma o punto** como separador decimal
 
----
+### Menú Principal:
 
-Menú Principal:
--
 ```text
       SIMULADOR MISION ARTEMIS
       1. Cambiar altitud y masa
@@ -107,7 +105,7 @@ Menú Principal:
       0. Salir
 ```
 
-## Estructura del proyecto
+### Estructura del proyecto
 
 ```text
 Laboratorio-C/
@@ -125,11 +123,12 @@ Laboratorio-C/
 | `main.c` | Menú principal y flujo general |
 | `artemis.h` / `artemis.c` | Tipos de datos, cálculos físicos, simulación por turnos y reporte final |
 | `validaciones.h` / `validaciones.c` | Ingreso seguro de datos y mensajes de error |
-
---- 
+ 
 Al iniciar, el programa pide altitud y masa (sin esos datos no existe la órbita). Luego repite el menú hasta que se elige 0
 
 Estructuras de datos utilizadas:
+
+
 
 Instrucciones de compilación y ejecución:
 
