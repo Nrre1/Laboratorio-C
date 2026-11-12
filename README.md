@@ -44,23 +44,23 @@ Tras apagar los motores de ascenso, la nave Orion queda en una órbita terrestre
 Fundamento Físico:
 -
 1) Ecuaciones Utilizadas:
-   
-   | Magnitud | Ecuación |
-   |----------|----------|
-   | Radio orbital | $r = R_T + h$ |
-   | Fuerza gravitatoria | $F_g = \dfrac{G \, M_T \, m}{r^2}$ |
-   | Fuerza centrípeta | $F_c = \dfrac{m \, v^2}{r}$ |
-   | Velocidad orbital (de $F_g = F_c$, la masa se cancela) | $v = \sqrt{\dfrac{G \, M_T}{r}}$ |
-   | Período (MCU) | $T = \dfrac{2\pi r}{v}$ |
-   | Aceleración centrípeta | $a_c = \dfrac{v^2}{r}$ |
-   | Cambio de velocidad del pulso | $\Delta v = a \cdot t$ |
-   | Desviación lateral instantánea | $d = \tfrac{1}{2} \, a \, t^2$ |
-   | Energía específica (con $\mu = G M_T$) | $E = \dfrac{v_r^2 + v_t^2}{2} - \dfrac{\mu}{r}$ |
-   | Excentricidad | $e^2 = \left(\dfrac{r v_t^2}{\mu} - 1\right)^2 + \left(\dfrac{r v_r v_t}{\mu}\right)^2$ |
-   | Semieje mayor | $a = -\dfrac{\mu}{2E}$ |
-   | Perigeo / Apogeo | $a(1 - e)$ / $a(1 + e)$ |
 
-2) ¿Qué hace el programa?
+| Magnitud | Ecuación |
+|----------|----------|
+| Radio orbital | $r = R_T + h$ |
+| Fuerza gravitatoria | $F_g = \dfrac{G \, M_T \, m}{r^2}$ |
+| Fuerza centrípeta | $F_c = \dfrac{m \, v^2}{r}$ |
+| Velocidad orbital (de $F_g = F_c$, la masa se cancela) | $v = \sqrt{\dfrac{G \, M_T}{r}}$ |
+| Período (MCU) | $T = \dfrac{2\pi r}{v}$ |
+| Aceleración centrípeta | $a_c = \dfrac{v^2}{r}$ |
+| Cambio de velocidad del pulso | $\Delta v = a \cdot t$ |
+| Desviación lateral instantánea | $d = \tfrac{1}{2} \, a \, t^2$ |
+| Energía específica (con $\mu = G M_T$) | $E = \dfrac{v_r^2 + v_t^2}{2} - \dfrac{\mu}{r}$ |
+| Excentricidad | $e^2 = \left(\dfrac{r v_t^2}{\mu} - 1\right)^2 + \left(\dfrac{r v_r v_t}{\mu}\right)^2$ |
+| Semieje mayor | $a = -\dfrac{\mu}{2E}$ |
+| Perigeo / Apogeo | $a(1 - e)$ / $a(1 + e)$ |
+
+3) ¿Qué hace el programa?
 
            - Calcula Fg y Fc por separado, muestra su diferencia relativa (≈ 10⁻¹⁶) y la deducción de v
            - Calcula y muestra T en s y en min.
