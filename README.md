@@ -30,7 +30,8 @@ Tras apagar los motores de ascenso, la nave Orion queda en una órbita terrestre
 
 
 
-      $${\color{cyan}Dato}$$         $${\color{cyan}Valor}$$                     
+$${\color{cyan}Dato}$$         $${\color{cyan}Valor}$$
+
     Masa de la Tierra (MT)	          5,972 × 10²⁴ kg
     Radio medio de la Tierra (RT)    	6.371.000 m
     Constante de gravitación (G)    	6,674 × 10⁻¹¹ N·m²/kg²
