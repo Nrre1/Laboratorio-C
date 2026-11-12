@@ -1,5 +1,8 @@
-# Simulador Artemis — Escenario 2: Inserción y estabilidad en órbita terrestre baja (LEO)
+# 🚀 Simulador Artemis
+![Lenguaje](https://img.shields.io/badge/Lenguaje-C11-blue?logo=c&logoColor=white)
+
 Universidad Tecnológica Nacional – Facultad Regional Resistencia Cátedra: Algoritmos y Estructuras de Datos · Ingeniería en Sistemas de Información Trabajo Práctico Integrador Final · Lenguaje C
+
 
 Integrantes:
 -
@@ -20,24 +23,22 @@ Video de presentación del trabajo:
 
 ---
 
-Escenario Propuesto:
--
+## Escenario asignado
 
-Situación - Problema 2: Inserción y Estabilidad en Órbita Terrestre Baja — LEO (MCU y 
-Gravitación) 
+> **Situación-Problema 2: Inserción y Estabilidad en Órbita Terrestre Baja — LEO (MCU y Gravitación)**
 -
 Tras apagar los motores de ascenso, la nave Orion queda en una órbita terrestre baja (LEO) de estacionamiento, donde describe un Movimiento Circular Uniforme (MCU) a altitud constante. Datos otorgados por el enunciado:
 
 
-$${\color{cyan}DATO \space \space \space \space \space \space \space \space \space \space \space \space \space \space \space \space \space \color{cyan}VALOR}$$
-
-                                         Masa de la Tierra (MT)	          5,972 × 10²⁴ kg
-                                         Radio medio de la Tierra (RT)    	6.371.000 m
-                                         Constante de gravitación (G)    	6,674 × 10⁻¹¹ N·m²/kg²
-                                         Altitud de la órbita (h)	        192.000 m
-                                         Radio orbital (r = R_T + h)     	6.563.000 m
-                                         Masa de Orion (m)	                33.000 kg
-                                         Pulso lateral	                    a = 0,50 m/s² durante Δt = 10 s 
+    | Dato | Símbolo | Valor |
+    |------|:-------:|------:|
+    | Masa de la Tierra | MT | 5,972 × 10²⁴ kg |
+    | Radio medio de la Tierra | RT | 6.371.000 m |
+    | Constante de gravitación | G | 6,674 × 10⁻¹¹ N·m²/kg² |
+    | Altitud de la órbita | h | 192.000 m |
+    | Radio orbital (RT + h) | r | 6.563.000 m |
+    | Masa de Orion | m | 33.000 kg |
+    | Pulso lateral | a, Δt | 0,50 m/s² durante 10 s |
     
 ---
 
@@ -45,17 +46,20 @@ Fundamento Físico:
 -
 1) Ecuaciones Utilizadas:
    
-           Radio orbital	r = RT + h
-           Fuerza gravitatoria	Fg = G · MT · m / r²
-           Fuerza centrípeta	Fc = m · v² / r
-           Velocidad orbital (de Fg = Fc; la masa se cancela)	v = √(G · MT / r)
-           Período (MCU)	T = 2π · r / v
-           Aceleración centrípeta	ac = v² / r
-           Cambio de velocidad del pulso	Δv = a · t
-           Desviación lateral instantánea (MRUV desde reposo lateral)	d = ½ · a · t²
-           Energía (con μ = G·MT)	E = (vr² + vt²)/2 − μ/r
-           Excentricidad	e² = (r·vt²/μ − 1)² + (r·v_r·v_t/μ)²
-           Semieje mayor, perigeo y apogeo	a = −μ/(2E), perigeo = a(1 − e), apogeo = a(1 + e)
+          | Magnitud | Ecuación |
+          |----------|----------|
+       | Radio orbital | $r = R_T + h$ |
+       | Fuerza gravitatoria | $F_g = \dfrac{G \, M_T \, m}{r^2}$ |
+       | Fuerza centrípeta | $F_c = \dfrac{m \, v^2}{r}$ |
+       | Velocidad orbital (de $F_g = F_c$, la masa se cancela) | $v = \sqrt{\dfrac{G \, M_T}{r}}$ |
+       | Período (MCU) | $T = \dfrac{2\pi r}{v}$ |
+       | Aceleración centrípeta | $a_c = \dfrac{v^2}{r}$ |
+       | Cambio de velocidad del pulso | $\Delta v = a \cdot t$ |
+       | Desviación lateral instantánea | $d = \tfrac{1}{2} \, a \, t^2$ |
+       | Energía específica (con $\mu = G M_T$) | $E = \dfrac{v_r^2 + v_t^2}{2} - \dfrac{\mu}{r}$ |
+       | Excentricidad | $e^2 = \left(\dfrac{r v_t^2}{\mu} - 1\right)^2 + \left(\dfrac{r v_r v_t}{\mu}\right)^2$ |
+       | Semieje mayor | $a = -\dfrac{\mu}{2E}$ |
+       | Perigeo / Apogeo | $a(1 - e)$ / $a(1 + e)$ |
 
 2) ¿Qué hace el programa?
 
@@ -100,7 +104,27 @@ Menú Principal:
       4. Simulacion por turnos
       0. Salir
 
-Al iniciar, el programa pide altitud y masa (sin esos datos no existe la órbita). Luego repite el menú hasta que se elige 0.
+## Estructura del proyecto
+
+```text
+Laboratorio-C/
+├── main.c            # main() y menú principal
+├── artemis.h         # constantes, structs y prototipos
+├── artemis.c         # lógica y cálculos físicos
+├── validaciones.h    # prototipos de ingreso seguro
+├── validaciones.c    # lectura validada de enteros, decimales y caracteres
+├── Makefile          # compilación
+└── README.md
+```
+
+| Módulo | Responsabilidad |
+|--------|-----------------|
+| `main.c` | Menú principal y flujo general |
+| `artemis.h` / `artemis.c` | Tipos de datos, cálculos físicos, simulación por turnos y reporte final |
+| `validaciones.h` / `validaciones.c` | Ingreso seguro de datos y mensajes de error |
+
+--- 
+Al iniciar, el programa pide altitud y masa (sin esos datos no existe la órbita). Luego repite el menú hasta que se elige 0
 
 Estructuras de datos utilizadas:
 
