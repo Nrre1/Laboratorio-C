@@ -67,28 +67,28 @@ Fundamento Físico:
            - Calcula y muestra ac
            - Calcula Δv, la desviación, y describe la nueva órbita (elíptica, con excentricidad, perigeo y apogeo)
    
-Funcionamiento del programa
--
-Reglas del Juego
--
-1)	La partida tiene 5 turnos
-2)	En cada turno ocurre un evento aleatorio que desvía la nave con una velocidad radial entre −5,00 y +5,00 m/s. El programa muestra la velocidad radial acumulada
+##Funcionamiento del programa
+
+###Reglas del Juego
+1)	La partida tiene **5 turnos**
+2)	En cada turno ocurre un **evento aleatorio** que desvía la nave con una velocidad radial entre −5,00 y +5,00 m/s. El programa muestra la velocidad radial acumulada
 3)	El jugador corrige con un pulso lateral: aceleración a entre −2 y +2 m/s² (el signo indica el sentido: + hacia afuera, − hacia adentro, 0 = no actuar) y una duración t entre 0 y 30 s.
 4)	Al terminar cada turno se muestra la órbita resultante (excentricidad, perigeo y apogeo)
 5)	Se gana si después del 5.º turno la excentricidad es e ≤ 0,0001 (órbita casi circular, equivale a una velocidad radial residual de menos de ≈ 0,78 m/s). Si no, la misión queda incompleta
 6)	Para estabilizar, el jugador debe elegir a · t ≈ − (velocidad radial actual)
-7)	Al finalizar se genera automáticamente el reporte final de desempeño con todos los turnos
+7)	Al finalizar se genera automáticamente el **reporte final** de desempeño con todos los turnos
 
 entrada de datos:
 
-              Dato	              Rango válido
-           Altitud (h)	          180 a 2000 km
-           Masa (m)	             1000 a 100000 kg
-           Aceleración del pulso 	0,01 a 5 m/s²
-           Duración del pulso 	    0,1 a 60 s
-           Aceleración en el juego	−2 a 2 m/s²
-           Duración en el juego	     0 a 30 s
-           Opción del menú	          0 a 4
+| Dato | Rango válido |
+|------|:------------:|
+| Altitud (h) | 180 a 2000 km |
+| Masa (m) | 1000 a 100000 kg |
+| Aceleración del pulso | 0,01 a 5 m/s² |
+| Duración del pulso | 0,1 a 60 s |
+| Aceleración en el juego | −2 a 2 m/s² |
+| Duración en el juego | 0 a 30 s |
+| Opción del menú | 0 a 4 |
 
 Se acepta **coma o punto** como separador decimal
 
