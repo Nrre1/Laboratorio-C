@@ -9,7 +9,7 @@
 static void Menu(void)
 {
     printf("\nSIMULADOR MISION ARTEMIS\n");
-    printf("\nBienvenido tripulante\n\n");
+    printf("\nBienvenido tripulante.\n\n");
     printf("1. Cambiar altitud y masa\n");
     printf("2. Mostrar orbita LEO\n");
     printf("3. Pulso lateral\n");
@@ -27,7 +27,7 @@ int main(void)
     printf("Ingrese los datos de la mision:\n");
     InicializarNave(&miNave);      /*  se piden al inicio los datos */
 
-    do {                                                      /* se muestra el menui */
+    do {                                                      /* se muestra el menu */
         Menu();
         opcion = (int)lee_nro("Seleccione una opcion: ", 0, 4, true); /* enteros de 0 a 4 */
         switch (opcion) {                                     /* ejecuta la eleccion */
