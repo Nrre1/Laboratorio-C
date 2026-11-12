@@ -1,4 +1,0 @@
-- Módulo Principal (main.c): Contiene únicamente la función main(), el menú principal de navegación y la inicialización del flujo general del programa.
-- Módulo de Cabecera (simulador.h / artemis.h): Declaración de constantes (#define), definición de tipos de datos estructurados (struct, typedef), y prototipos de funciones públicas de la simulación.
-- Módulo de Lógica (simulador.c / artemis.c): Implementación de los algoritmos de simulación, actualización del estado del juego, cálculos físicos y lógica de negocio.
-- Módulo de Validaciones e Interfaz (validaciones.c / .h): Funciones dedicadas al ingreso seguro de enteros, flotantes y caracteres, y mensajes de advertencia.
