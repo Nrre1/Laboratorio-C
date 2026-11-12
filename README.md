@@ -63,7 +63,6 @@ Fundamento Físico:
    
 Funcionamiento del programa
 -
----
 Reglas del Juego
 -
 1)	La partida tiene 5 turnos
