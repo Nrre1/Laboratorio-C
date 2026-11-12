@@ -138,7 +138,11 @@ Ejemplo de ejecución:
 
 Registro del uso de Inteligencia Artificial:
 
-###
+## Instrucciones de compilación y ejecución
+
+```bash
+make
+./artemis
    
 
 
