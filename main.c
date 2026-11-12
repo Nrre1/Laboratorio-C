@@ -10,7 +10,7 @@ static void Menu(void)
 {
     printf("\nSIMULADOR MISION ARTEMIS\n");
     printf("\nBienvenido tripulante, seleccione alguna de las opciones porfavor:\n");
-    printf("1. Cambiar altitud y masa\n");
+    printf("\n1. Cambiar altitud y masa\n");
     printf("2. Mostrar orbita LEO\n");
     printf("3. Pulso lateral\n");
     printf("4. Simulacion por turnos\n");
