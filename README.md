@@ -95,8 +95,8 @@ Menú Principal:
 -
       SIMULADOR ARTEMIS - ESCENARIO 2 LEO
       1. Cambiar altitud y masa
-      2. Mostrar orbita LEO (items a, b y c)
-      3. Pulso lateral (item d)
+      2. Mostrar orbita LEO 
+      3. Pulso lateral 
       4. Simulacion por turnos
       0. Salir
 
