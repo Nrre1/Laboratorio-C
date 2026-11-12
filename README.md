@@ -29,7 +29,7 @@ Gravitación)
 Tras apagar los motores de ascenso, la nave Orion queda en una órbita terrestre baja (LEO) de estacionamiento, donde describe un Movimiento Circular Uniforme (MCU) a altitud constante. Datos otorgados por el enunciado:
 
 
-$${\color{cyan}DATO \space \space \space \space \space \space \space \space \space \space \space \space \space \space \color{cyan}VALOR}$$
+$${\color{cyan}DATO \space \space \space \space \space \space \space \space \space \space \space \space \space \space \space \space \space \color{cyan}VALOR}$$
 
                                          Masa de la Tierra (MT)	          5,972 × 10²⁴ kg
                                          Radio medio de la Tierra (RT)    	6.371.000 m
