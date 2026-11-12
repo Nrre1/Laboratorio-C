@@ -26,7 +26,7 @@ Video de presentación del trabajo:
 ## Escenario asignado
 
 > **Situación-Problema 2: Inserción y Estabilidad en Órbita Terrestre Baja — LEO (MCU y Gravitación)**
--
+
 Tras apagar los motores de ascenso, la nave Orion queda en una órbita terrestre baja (LEO) de estacionamiento, donde describe un Movimiento Circular Uniforme (MCU) a altitud constante. Datos otorgados por el enunciado:
 
 
