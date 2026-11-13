@@ -116,7 +116,7 @@ Laboratorio-C/
  
 ### Estructuras de datos utilizadas (ejemplos):
 
-1. Estructuras de datos (`struct`)
+1. Estructuras de datos (`struct`).
 
    ```text
     typedef struct {
@@ -137,14 +137,14 @@ Laboratorio-C/
     ```text
      NaveOrion *nave (InicializarNave, CalcVelocidad, Calcperiodo, Calcaceleracion)
      ```
-    - La función puede escribir resultados dentro de la nave original
+    - La función puede escribir resultados dentro de la nave original.
 
 3. Arrelos (`array`)
    
    ```text
      char linea[TAM_LINEA]
      ```
-   - Guarda lo que ingresa el usuario
+   - Guarda lo que ingresa el usuario.
 
 4. Constantes (`#define`)
    
@@ -152,7 +152,7 @@ Laboratorio-C/
    #define EXCEN     0.0001      
    #define MAXTURNOS 5         
     ```
-   - Ayudan establecer valores fijos
+   - Ayudan establecer valores fijos.
 
 5. Funciones y Procedimientos
    
@@ -160,8 +160,8 @@ Laboratorio-C/
       Menu()
       InicializarNave(NaveOrion *nave)     
     ```
-   - Menú Imprime las opciones
-   - Inicializar Nave Pide masa y altitud y calcula los valores iniciales
+   - Menú Imprime las opciones.
+   - Inicializar Nave Pide masa y altitud y calcula los valores iniciales.
 
 6. Estructuras de control
 
@@ -180,7 +180,7 @@ Laboratorio-C/
                 ; 
         }
     ```
-- Valida el número ingresado por el usuario
+- Valida el número ingresado por el usuario.
   
 **Si la línea es corta (`if`):**
 1. Quita el Enter del final.
