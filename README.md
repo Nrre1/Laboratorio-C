@@ -200,11 +200,11 @@ Si el dato no es válido, se muestra el error y se vuelve a pedir.
 
 ### Instrucciones de compilación y ejecución:
 
-1. Ingresar al repositorio en github.com (`Laboratorio-C`)
-2. En el repositorio, clic en el botón verde $\color{green}{\text{Code}}$ → pestaña **Codespaces** → **Create codespace on main**
-3. Esperar a que cargue la terminal
+1. Ingresar al repositorio en github.com (`Laboratorio-C`).
+2. En el repositorio, clic en el botón verde $\color{green}{\text{Code}}$ → pestaña **Codespaces** → **Create codespace on main**.
+3. Esperar a que cargue la terminal.
 4. Una vez cargado, en la terminal escribir  `make                
-                                              ./artemis` y darle al enter
+                                              ./artemis` y darle al enter.
 
 ### Menú Principal:
 
