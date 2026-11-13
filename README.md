@@ -94,17 +94,6 @@ entrada de datos:
 
 Se acepta **coma o punto** como separador decimal
 
-### Menú Principal:
-
-```text
-      SIMULADOR MISION ARTEMIS
-      1. Cambiar altitud y masa
-      2. Mostrar orbita LEO 
-      3. Pulso lateral 
-      4. Simulacion por turnos
-      0. Salir
-```
-
 ### Estructura del proyecto
 
 ```text
@@ -207,7 +196,6 @@ Laboratorio-C/
 - Descarta lo que quedó sin leer en el buffer
 
 Si el dato no es válido, se muestra el error y se vuelve a pedir 
-
 
 ### Instrucciones de compilación y ejecución:
 
