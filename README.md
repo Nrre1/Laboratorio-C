@@ -60,7 +60,7 @@ Fundamento Físico:
 | Semieje mayor | $a = -\dfrac{\mu}{2E}$ |
 | Perigeo / Apogeo | $a(1 - e)$ / $a(1 + e)$ |
 
-3) ¿Qué hace el programa?
+2) ¿Qué hace el programa?
 
            - Calcula Fg y Fc por separado, muestra su diferencia relativa (≈ 10⁻¹⁶) y la deducción de v
            - Calcula y muestra T en s y en min.
