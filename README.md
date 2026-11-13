@@ -201,9 +201,6 @@ Si el dato no es válido, se muestra el error y se vuelve a pedir
 
 1. Ingresar al repositorio en github.com (`Laboratorio-C`)
 2. En el repositorio, clic en el botón verde **Code** → pestaña **Codespaces** → **Create codespace on main**.
-   
-   ![Boton Code](imagenes/boton-code.png)
-   
 3. Esperar a que cargue la terminal
 4. Una vez cargado, en la terminal escribir  `make                
                                               ./artemis` y darle al enter
