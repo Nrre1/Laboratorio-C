@@ -80,7 +80,8 @@ Fundamento Físico:
 6)	Para estabilizar, el jugador debe elegir a · t ≈ − (velocidad radial actual)
 7)	Al finalizar se genera automáticamente el **reporte final** de desempeño con todos los turnos
 
-entrada de datos:
+Tabla de datos esperados:
+En esta tabla el usuario debe ingresar valores dentro del rango permitido respectivamente para cada dato. Si ingresa un dato erróneo se le informara y le pedirá nuevamente que ingrese un dato valido.
 
 | Dato | Rango válido |
 |------|:------------:|
