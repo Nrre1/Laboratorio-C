@@ -8,7 +8,7 @@ Integrantes:
 -
 ⭐ Arriazu, Nerea Micaela
 
-⭐ Franco, Gastón Agustín
+⭐ Franco, Gastón 
 
 ⭐ Lazarte, Valentino Mariano
 
