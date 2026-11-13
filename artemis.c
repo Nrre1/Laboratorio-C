@@ -9,7 +9,7 @@
 /* Item a) la gravedad actua como fuerza centripeta.*/
 void CalcVelocidad(NaveOrion *nave)
 {
-    const double mu = G * Mt;                  
+    const double mu = G * MT;                  
     const double r  = nave->radio_orbital;     
 
     nave->fuerza_gravitatoria = mu * nave->masa / (r * r);   
@@ -20,7 +20,7 @@ void CalcVelocidad(NaveOrion *nave)
 /* Item b) periodo del movimiento circular uniforme*/
 void CalcPeriodo(NaveOrion *nave)
 {
-    nave->periodo_segundos = 2.0 * Pi * nave->radio_orbital / nave->velocidad_orbital;
+    nave->periodo_segundos = 2.0 * PI * nave->radio_orbital / nave->velocidad_orbital;
 }
 
 /* Item c): aceleracion centripeta*/
@@ -34,7 +34,7 @@ void InicializarNave(NaveOrion *nave)
 {
     nave->altitud = lee_nro("Altitud orbital h [km]: ", 180, 2000, false);    
     nave->masa    = lee_nro("Masa de la nave m [kg]: ", 1000, 100000, false);  
-    nave->radio_orbital = Rt + nave->altitud * 1000.0;  
+    nave->radio_orbital = RT + nave->altitud * 1000.0;  
     CalcVelocidad(nave);      
     CalcPeriodo(nave);        
     CalcAceleracion(nave);    
@@ -43,11 +43,11 @@ void InicializarNave(NaveOrion *nave)
 /* Muestra los items a), b) y c). */
 void MostrarOrb(const NaveOrion *nave)
 {
-    printf("\na) Fg = G*Mt*m/r^2 = %.6e N\n", nave->fuerza_gravitatoria);   /* fuerza gravitatoria */
+    printf("\na) Fg = G*MT*m/r^2 = %.6e N\n", nave->fuerza_gravitatoria);   /* fuerza gravitatoria */
     printf("   Fc = m*v^2/r    = %.6e N\n", nave->fuerza_centripeta);       /* fuerza centripeta */
     printf("   Diferencia relativa = %.2e\n",                               /* prueba numerica de que Fg = Fc */
            fabs(nave->fuerza_gravitatoria - nave->fuerza_centripeta) / nave->fuerza_gravitatoria);
-    printf("   Si Fg actua como Fc: G*MT*m/r^2 = m*v^2/r -> v^2 = G*Mt/r (la masa se cancela)\n"); /* demostracion analitica */
+    printf("   Si Fg actua como Fc: G*MT*m/r^2 = m*v^2/r -> v^2 = G*MT/r (la masa se cancela)\n"); /* demostracion analitica */
     printf("   Velocidad orbital v = %.3f m/s\n", nave->velocidad_orbital); /* resultado de a) */
     printf("b) Periodo T = %.2f s = %.2f min\n",                            /* resultado de b) en s y min */
            nave->periodo_segundos, nave->periodo_segundos / 60.0);
@@ -57,15 +57,15 @@ void MostrarOrb(const NaveOrion *nave)
 
 void CalcElementos(double r, double vr, double vt, Elementos *e)
 {
-    const double mu = G * Mt;                                  
+    const double mu = G * MT;                                  
     const double energia = (vr * vr + vt * vt) / 2.0 - mu / r; 
     const double fx = r * vt * vt / mu - 1.0;         
     const double fy = r * vr * vt / mu;             
     const double semieje = -mu / (2.0 * energia);          
 
     e->excentricidad = sqrt(fx * fx + fy * fy);                      
-    e->perigeo_km = (semieje * (1.0 - e->excentricidad) - Rt) / 1000.0;  
-    e->apogeo_km  = (semieje * (1.0 + e->excentricidad) - Rt) / 1000.0;  
+    e->perigeo_km = (semieje * (1.0 - e->excentricidad) - RT) / 1000.0;  
+    e->apogeo_km  = (semieje * (1.0 + e->excentricidad) - RT) / 1000.0;  
 }
 
 /* imprime la forma de una orbita */
@@ -102,7 +102,7 @@ static void ReporteFinal(const Turno tab[], bool exito)
     int i;    /* indice del arreglo (en C empieza en 0) */
 
     printf("\nREPORTE FINAL DE DESEMPENO\n");
-    for (i = 0; i < MaxTurnos; i++) {                                  
+    for (i = 0; i < MAXTURNOS; i++) {                                  
         printf("Turno %d: perturbacion = %+.2f m/s | dv aplicado = %+.2f m/s\n",
                i + 1, tab[i].perturbacion, tab[i].delta_v);           
         MostrarElem(tab[i].orbita);                               
@@ -114,21 +114,21 @@ static void ReporteFinal(const Turno tab[], bool exito)
 }
 
 /* Juego: en cada turno un evento aleatorio desvia la nave y el jugador corrige con un pulso lateral.*/
-/* Gana si despues de MaxTurnos turnos la orbita es casi circular (e <= Excen).*/
+/* Gana si despues de MAXTURNOS turnos la orbita es casi circular (e <= EXCEN).*/
  
 void Turnos(const NaveOrion *nave)
 {
-    Turno tab[MaxTurnos];                    /* arreglo de structs: un registro por turno */
+    Turno tab[MAXTURNOS];                    /* arreglo de structs: un registro por turno */
     double vr = 0.0;                         
     const double vt = nave->velocidad_orbital; 
     double a, t, dv;                         
     int turno;                                
 
-    printf("\nSIMULACION POR TURNOS: deje la orbita casi circular (e <= %g)\n", Excen);
-    for (turno = 0; turno < MaxTurnos; turno++) {                                /* ciclo definido 5 turnos */
+    printf("\nSIMULACION POR TURNOS: deje la orbita casi circular (e <= %g)\n", EXCEN);
+    for (turno = 0; turno < MAXTURNOS; turno++) {                                /* ciclo definido 5 turnos */
         tab[turno].perturbacion = (rand() % 1001) / 100.0 - 5.0;        
         vr += tab[turno].perturbacion;                                 
-        printf("\n--- TURNO %d de %d ---\n", turno + 1, MaxTurnos);
+        printf("\n--- TURNO %d de %d ---\n", turno + 1, MAXTURNOS);
         printf("Evento: dv radial = %+.2f m/s | velocidad radial actual = %+.2f m/s\n",
                tab[turno].perturbacion, vr);                                            /* el jugador ve que debe corregir */
 
@@ -142,5 +142,5 @@ void Turnos(const NaveOrion *nave)
         printf("Resultado del turno:\n");
         MostrarElem(tab[turno].orbita);
     }
-    ReporteFinal(tab, tab[MaxTurnos - 1].orbita.excentricidad <= Excen); /* gana si el ultimo turno quedo casi circular */
+    ReporteFinal(tab, tab[MAXTURNOS - 1].orbita.excentricidad <= EXCEN); /* gana si el ultimo turno quedo casi circular */
 }
