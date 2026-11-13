@@ -4,11 +4,11 @@
 /* Constantes  */
 
 #define G   6.674e-11   
-#define Mt  5.972e24           
-#define Rt  6371000.0           
-#define Pi  3.141592653589793  
-#define Excen      0.0001      
-#define MaxTurnos 5            
+#define MT  5.972e24           
+#define RT  6371000.0           
+#define PI  3.141592653589793  
+#define EXCEN      0.0001      
+#define MAXTURNOS 5            
 
 /*  Tipos de datos */
 /* registro de la nave */
