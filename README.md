@@ -124,25 +124,143 @@ Laboratorio-C/
 | `artemis.h` / `artemis.c` | Tipos de datos, cálculos físicos, simulación por turnos y reporte final |
 | `validaciones.h` / `validaciones.c` | Ingreso seguro de datos y mensajes de error |
  
-Al iniciar, el programa pide altitud y masa (sin esos datos no existe la órbita). Luego repite el menú hasta que se elige 0
+### Estructuras de datos utilizadas (ejemplos):
 
-Estructuras de datos utilizadas:
+1. Estructuras de datos (`struct`)
+
+   ```text
+    typedef struct {
+        double masa;                  
+        double altitud;               
+        double radio_orbital;          
+        double fuerza_gravitatoria;   
+        double fuerza_centripeta;      
+        double velocidad_orbital;     
+        double periodo_segundos;       
+        double aceleracion_centripeta; 
+    } NaveOrion;
+   ```
+   - Agrupa en una sola variable los datos físicos de la misión, guarda los datos de entrada (masa y altitud) y los resultados calculados (fuerzas, aceleración, velocidad, etc.). En vez de pasar variables sueltas a cada función, se pasa un solo puntero
+
+2. Punteros 
+
+    ```text
+     NaveOrion *nave (InicializarNave, CalcVelocidad, Calcperiodo, Calcaceleracion)
+     ```
+    - La función puede escribir resultados dentro de la nave original
+
+3. Arrelos (`array`)
+   
+   ```text
+     char linea[TAM_LINEA]
+     ```
+   - Guarda lo que ingresa el usuario
+
+4. Constantes (`#define`)
+   
+   ```text
+   #define EXCEN     0.0001      
+   #define MAXTURNOS 5         
+    ```
+   - Ayudan establecer valores fijos
+
+5. Funciones y Procedimientos
+   
+      ```text
+      Menu()
+      InicializarNave(NaveOrion *nave)     
+    ```
+   - Menú Imprime las opciones
+   - Inicializar Nave Pide masa y altitud y calcula los valores iniciales
+
+6. Estructuras de control
+
+   ```text
+      if (fin != NULL) {                                  
+            *fin = '\0';                                     
+            while ((coma = strchr(linea, ',')) != NULL)      
+                *coma = '.';                                 
+            valor = strtod(linea, &fin);                   
+            valido = strspn(linea, "0123456789+-.") == strlen(linea)  
+                     && fin != linea && *fin == '\0'         
+                     && valor >= minimo && valor <= maximo   
+                     && (!soloEntero || valor == floor(valor));  
+        } else {                                            
+            while ((c = getchar()) != '\n' && c != EOF)      
+                ; 
+        }
+    ```
+- Valida el número ingresado por el usuario
+  
+**Si la línea es corta (`if`):**
+1. Quita el Enter del final
+2. Cambia las comas por puntos
+3. Convierte el texto a número con `strtod`
+4. Marca el dato como válido solo si:
+   - contiene solamente dígitos, `+`, `-` o `.`
+   - no está vacío
+   - no sobra texto después del número
+   - está entre el mínimo y el máximo
+   - si se pide entero, no tiene decimales
+
+**Si la línea es demasiado larga (`else`):**
+- Descarta lo que quedó sin leer en el buffer
+
+Si el dato no es válido, se muestra el error y se vuelve a pedir 
 
 
+### Instrucciones de compilación y ejecución:
 
-Instrucciones de compilación y ejecución:
+1. Ingresar al repositorio en github.com (`Laboratorio-C`)
+2. En el repositorio, clic en el botón verde **Code** → pestaña **Codespaces** → **Create codespace on main**.
+   
+   ![Boton Code](imagenes/boton-code.png)
+   
+3. Esperar a que cargue la terminal
+4. Una vez cargado, en la terminal escribir  `make                
+                                              ./artemis` y darle al enter
 
-Ejemplo de ejecución:
+### Menú Principal:
+
+```text
+      SIMULADOR MISION ARTEMIS
+      1. Cambiar altitud y masa
+      2. Mostrar orbita LEO 
+      3. Pulso lateral 
+      4. Simulacion por turnos
+      0. Salir
+```
+
+| opciones | Qué hace |
+|--------|-----------------|
+| `1` | Pide al usuario ingresaar nuevos datos de altitud y masa y recalcula todo |
+| `2` | Muestra los resultados ya calculados de: la diferencia relativa de fg y fc, demostración de \(v^2 = \frac{G \cdot M_t}{r}\) y la velocidad orbital |
+| `3` | Pide aceleraación y duración dentro de un rango, calcula el cambio de velocidad y muestra dv, desviación lateral y los elementos orbitales |
+| `4` | Juego |
+| `0` | Termina |
+
+### - ¿Cómo funciona la simulación? ( `opcion 4` )
+
+  El objetivo principal es dejar la órbita casi circular (con la excentricidad menor o igual a 0,0001) después de 5 turnos
+
+  ### En Cada turno:
+   1. Una perturbación aleatoria (-5.00 a +5.00m/s) desvía la nave y se suma a la velocidad radial
+   2. Pide al jugador ingresar una acelereción de entre -2 a +2m/s² y una duración en segundos de 0 a 30s
+   3. El programa calcula dv = a.t y se suuma a la velocidad radial
+   4. El programa recalcula excentricidad, perigeo y apogeo y se guardan en el arreglo `tab[turno]`
+   5. Al finalizar los 5 turnos, se muestra un `reporte final` con el historial completo y si la misión fue exitosa o incompleta/fallida
+
+  Para poder ganar el juego, en el último turno la velocidad radial debe ser casi **cero** 
+    
+
+### Ejemplo de ejecución:
 
 ---
 
 Registro del uso de Inteligencia Artificial:
 
-## Instrucciones de compilación y ejecución
 
-```bash
-make
-./artemis
+
    
 
 
