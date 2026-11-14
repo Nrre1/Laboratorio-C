@@ -310,7 +310,7 @@ Turno 5: perturbacion = +4.22 m/s | dv aplicado = -28.00 m/s
 MISION INCOMPLETA: la orbita sigue demasiado excentrica.
 ```
 ---
-###Registro del uso de Inteligencia Artificial
+### Registro del uso de Inteligencia Artificial
 
 Durante el desarrollo de este trabajo práctico, se utilizó la inteligencia artificial `Claude (Anthropic)` como herramienta de consulta y apoyo complementario. El uso de esta se centró en la interpretación de consignas, la verificación de planteos físicos, la resolución de errores de compilación y sintaxis en lenguaje C, así como en la revisión de la modularización y documentación del código.
 
