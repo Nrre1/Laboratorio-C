@@ -1,2 +1,19 @@
+# Archivos compilados
 *.exe
 *.o
+*.obj
+*.a
+*.lib
+*.so
+*.dll
+*.dylib
+*.pdb
+*.ilk
+
+# Carpetas de compilacion
+/build/
+/bin/
+/obj/
+
+# Archivos temporales de Visual Studio
+.vs/
