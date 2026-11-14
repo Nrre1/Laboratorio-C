@@ -238,13 +238,87 @@ Si el dato no es válido, se muestra el error y se vuelve a pedir.
 
   Para poder ganar el juego, en el último turno la velocidad radial debe ser casi **cero**.
     
-
 ### Ejemplo de ejecución:
 
+```text
+   /workspaces/Laboratorio-C (main) $ ./artemis
+Ingrese los datos de la mision:
+Altitud orbital h [km]: 400
+Masa de la nave m [kg]: 3000
+```
+```text
+   Bienvenido tripulante.
+
+1. Cambiar altitud y masa
+2. Mostrar orbita LEO
+3. Pulso lateral
+4. Simulacion por turnos
+5. Salir
+```
+```text
+   Bienvenido tripulante.
+
+1. Cambiar altitud y masa
+2. Mostrar orbita LEO
+3. Pulso lateral
+4. Simulacion por turnos
+5. Salir
+```
+```text
+Seleccione una opcion: 4
+
+SIMULACION POR TURNOS: deje la orbita casi circular (e <= 0.0001)
+
+--- TURNO 1 de 5 ---
+Evento: dv radial = +2.88 m/s | velocidad radial actual = +2.88 m/s
+Aceleracion [m/s2] (+ afuera, - adentro, 0 = no actuar): 2
+Duracion del pulso [s]: 1
+Resultado del turno:
+   e = 0.000631 | perigeo = 295.79 km | apogeo = 304.21 km
+
+--- TURNO 2 de 5 ---
+Evento: dv radial = +4.78 m/s | velocidad radial actual = +9.66 m/s
+Aceleracion [m/s2] (+ afuera, - adentro, 0 = no actuar): 2
+Duracion del pulso [s]: 17
+Resultado del turno:
+   e = 0.005648 | perigeo = 262.53 km | apogeo = 337.89 km
+
+--- TURNO 3 de 5 ---
+Evento: dv radial = +1.22 m/s | velocidad radial actual = +44.88 m/s
+Aceleracion [m/s2] (+ afuera, - adentro, 0 = no actuar): -1
+Duracion del pulso [s]: 10
+Resultado del turno:
+   e = 0.004513 | perigeo = 270.03 km | apogeo = 330.24 km
+
+--- TURNO 4 de 5 ---
+Evento: dv radial = +4.79 m/s | velocidad radial actual = +39.67 m/s
+Aceleracion [m/s2] (+ afuera, - adentro, 0 = no actuar): 1.5
+Duracion del pulso [s]: 2
+Resultado del turno:
+   e = 0.005520 | perigeo = 263.38 km | apogeo = 337.03 km
+
+--- TURNO 5 de 5 ---
+Evento: dv radial = +4.22 m/s | velocidad radial actual = +46.89 m/s
+Aceleracion [m/s2] (+ afuera, - adentro, 0 = no actuar): -2
+Duracion del pulso [s]: 14
+Resultado del turno:
+   e = 0.002444 | perigeo = 283.74 km | apogeo = 316.34 km
+```
+```text
+  REPORTE FINAL DE DESEMPENO
+Turno 1: perturbacion = +2.88 m/s | dv aplicado = +2.00 m/s
+   e = 0.000631 | perigeo = 295.79 km | apogeo = 304.21 km
+Turno 2: perturbacion = +4.78 m/s | dv aplicado = +34.00 m/s
+   e = 0.005648 | perigeo = 262.53 km | apogeo = 337.89 km
+Turno 3: perturbacion = +1.22 m/s | dv aplicado = -10.00 m/s
+   e = 0.004513 | perigeo = 270.03 km | apogeo = 330.24 km
+Turno 4: perturbacion = +4.79 m/s | dv aplicado = +3.00 m/s
+   e = 0.005520 | perigeo = 263.38 km | apogeo = 337.03 km
+Turno 5: perturbacion = +4.22 m/s | dv aplicado = -28.00 m/s
+   e = 0.002444 | perigeo = 283.74 km | apogeo = 316.34 km
+MISION INCOMPLETA: la orbita sigue demasiado excentrica.
+```
 ---
-
-Registro del uso de Inteligencia Artificial:
-
 
 
    
