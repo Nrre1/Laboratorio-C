@@ -256,15 +256,6 @@ Masa de la nave m [kg]: 3000
 5. Salir
 ```
 ```text
-   Bienvenido tripulante.
-
-1. Cambiar altitud y masa
-2. Mostrar orbita LEO
-3. Pulso lateral
-4. Simulacion por turnos
-5. Salir
-```
-```text
 Seleccione una opcion: 4
 
 SIMULACION POR TURNOS: deje la orbita casi circular (e <= 0.0001)
