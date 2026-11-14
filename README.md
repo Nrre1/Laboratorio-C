@@ -19,7 +19,7 @@ Comisión: K1.3
 
 Año: 2026 
 
-Video de presentación del trabajo:
+Video de presentación del trabajo: https://drive.google.com/drive/folders/1vm1g8XyVbXfBB946-LCmtYMo2K0cXrPo?usp=sharing
 
 ---
 
