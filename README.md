@@ -310,6 +310,63 @@ Turno 5: perturbacion = +4.22 m/s | dv aplicado = -28.00 m/s
 MISION INCOMPLETA: la orbita sigue demasiado excentrica.
 ```
 ---
+###Registro del uso de Inteligencia Artificial
+
+Durante el desarrollo de este trabajo práctico, se utilizó la inteligencia artificial `Claude (Anthropic)` como herramienta de consulta y apoyo complementario. El uso de esta se centró en la interpretación de consignas, la verificación de planteos físicos, la resolución de errores de compilación y sintaxis en lenguaje C, así como en la revisión de la modularización y documentación del código.
+
+A continuación, se detallan las principales áreas de asistencia junto con los ejemplos de consultas (`prompts`) realizados:
+
+**1. Fundamentos Físicos y Matemáticos**
+Interpretación y resolución de ecuaciones: Análisis de las consignas y resolución analítica de las fórmulas aplicadas a la simulación.
+
+Prompt de ejemplo: 
+
+> "Teniendo en cuenta las siguientes ecuaciones físicas, resuelvelas con los datos dados en el enunciado"
+
+**2. Compilación y Errores de Enlace**
+Resolución de dependencias y depuración: Diagnóstico de errores de compilación mediante el análisis de mensajes y capturas de la terminal, además de la solución de problemas de enlace en el compilador gcc.
+
+Prompts de ejemplo:
+
+> "Me aparece undefined reference to sqrt al compilar con gcc, qué significa y para qué sirve -lm?"
+
+(Se adjuntaron mensajes y capturas de la terminal para depurar errores de compilación).
+
+**3. Sintaxis y Estructuras de Datos en C**
+Manejo de estructuras, precisión numérica y control de flujo: Consultas orientadas al paso de parámetros por referencia, las limitaciones en la comparación de variables de punto flotante (double) y la gestión de entradas mediante fgets.
+
+Prompts de ejemplo:
+
+> "Cómo paso un arreglo de struct a una función en C? por qué no hace falta usar &?"
+
+> "En mi programa de órbitas, Fg y Fc deberían ser iguales, pero Fg == Fc da falso, Por qué pasa y cómo comparo dos
+> double correctamente?"
+
+> "El lee_nro cierra el programa con exit(EXIT_FAILURE) cuando fgets devuelve NULL, por qué? se puede utilizar
+> contiunue?"
+
+**4. Arquitectura y Modularización del Código**
+Separación de responsabilidades: Evaluación del diseño modular del software entre distintos archivos fuente (main.c, artemis.c y validaciones.c) para asegurar cohesión y buenas prácticas de programación.
+
+Prompt de ejemplo:
+
+> "El programa tiene tres módulos: main.c (menú), artemis.c (cálculos y juego) y validaciones.c (lectura de datos) se > repartió bien la responsabilidad? qué funciones moverías de un archivo a otro y por qué?"
+
+**5. Depuración de Lógica (Debugging)**
+Corrección de índices y desfasajes: Identificación de errores lógicos y de tipo off-by-one en bucles de iteración de arreglos.
+
+Prompt de ejemplo:
+
+> "En el reporte final de mi simulación aparecen Turno 2 a Turno 6 pero el juego tiene 5 turnos, el arreglo es Turno > tab[MaxTurnos] con MaxTurnos = 5, y el ciclo es for (i = 1; i <= MaxTurnos; i++) { printf("Turno %d: ...", i + 1,
+> tab[i].perturbacion, ...); } qué está mal?"
+
+**6. Documentación**
+Revisión de entregables: Verificación de la estructura y completitud de la documentación del proyecto frente a los requisitos de la consigna.
+
+Prompt de ejemplo:
+
+> "Revisá mi README según estos puntos que pide el TP, decime qué falta"
+---
 
 
    
